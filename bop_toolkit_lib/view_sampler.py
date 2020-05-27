@@ -6,11 +6,18 @@
 import math
 import numpy as np
 
-from bop_toolkit_lib import transform
-from bop_toolkit_lib import inout
-from bop_toolkit_lib import misc
+from auto_pose.bop_toolkit.bop_toolkit_lib import transform
+from auto_pose.bop_toolkit.bop_toolkit_lib import inout
+from auto_pose.bop_toolkit.bop_toolkit_lib import misc
 
 
+def calc_2d_bbox(xs, ys, im_size):
+    bbTL = (max(xs.min() - 1, 0),
+            max(ys.min() - 1, 0))
+    bbBR = (min(xs.max() + 1, im_size[0] - 1),
+            min(ys.max() + 1, im_size[1] - 1))
+    return [bbTL[0], bbTL[1], bbBR[0] - bbTL[0], bbBR[1] - bbTL[1]]
+    
 def fibonacci_sampling(n_pts, radius=1.0):
   """Samples an odd number of almost equidistant 3D points from the Fibonacci
   lattice on a unit sphere.

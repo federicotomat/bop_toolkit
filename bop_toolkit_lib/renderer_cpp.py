@@ -6,8 +6,8 @@
 import sys
 import numpy as np
 
-from bop_toolkit_lib import config
-from bop_toolkit_lib import renderer
+from auto_pose.bop_toolkit.bop_toolkit_lib import config
+from auto_pose.bop_toolkit.bop_toolkit_lib import renderer
 
 # C++ renderer (https://github.com/thodan/bop_renderer)
 sys.path.append(config.bop_renderer_path)
